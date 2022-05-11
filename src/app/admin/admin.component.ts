@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {Layout} from "./layout.type";
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  layout: Layout;
+
+  constructor(private _activatedRoute: ActivatedRoute) {
+    console.log('helo');
+    const param = this._activatedRoute.snapshot.data;
+    console.log(param);
+    if (param && param['layout']) {
+      this.layout = param['layout'];
+    } else {
+      this.layout = 'empty';
+    }
+  }
 
   ngOnInit(): void {
   }
-
 }

@@ -1,1 +1,5 @@
-<p>admin works!</p>
+<app-admin-login *ngIf="layout === 'empty'"></app-admin-login>
+<app-protected-layout *ngIf="layout === 'protected'"></app-protected-layout>
+
+
+
